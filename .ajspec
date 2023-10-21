@@ -9,8 +9,8 @@ tags+: 13.2-php82-apache
 tags+: 13.2-php82-fpm
 13.2-php82-fpm.arch: amd64
 13.2-php82-fpm.name: "adminerevo"
-13.2-php82-fpm.timestamp.amd64: 1697919495
-13.2-php82-fpm.sum.amd64: d6042db57b22717a029849f2bdeb313ddb0061ba459f1091485b85fc13724858
-13.2-php82-fpm.size.amd64: 37148296
+13.2-php82-fpm.timestamp.amd64: 1697932589
+13.2-php82-fpm.sum.amd64: f8c2a939d95691244d875d201ec9883392899d6635ba021fd977099ea92c6e57
+13.2-php82-fpm.size.amd64: 37544092
 13.2-php82-fpm.source.amd64: https://images.all101bsd.download/adminerevo-fpm/13.2-php82-fpm-amd64-image.appjail
 13.2-php82-fpm.source.amd64+: http://appjail.hpc.at/adminerevo-fpm/13.2-php82-fpm-amd64-image.appjail
