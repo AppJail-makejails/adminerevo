@@ -1,7 +1,6 @@
 INCLUDE options/options.makejail
 
 ARG adminerevo_plugins?
-ARG adminerevo_drivers?
 ARG adminerevo_design?
 ARG adminerevo_php_type=production
 ARG adminerevo_upload_limit=128M
@@ -32,40 +31,25 @@ RAW else
 RAW fi
 
 RAW if [ -n "${adminerevo_plugins}" ]; then
-	RAW for plugin in ${adminerevo_plugins}; do
-		RAW if [ "`basename -- "${plugin}"`" != "${plugin}" ] || \
-				[ ! -f "/adminerevo/plugins/${plugin}.php" ]; then
-			RAW echo "###> '${plugin}' Plugin not found. <###" 
-			RAW exit 1
-		RAW fi
-
-		CMD echo "======> Installing plugin '${plugin}' ... <======"
-		CMD cp /adminerevo/plugins/${plugin}.php ${wwwdir}/plugins
-	RAW done
-RAW fi
-
-RAW if [ -n "${adminerevo_drivers}" ]; then
-	RAW for driver in ${adminerevo_drivers}; do
-		RAW if [ "`basename -- "${driver}"`" != "${driver}" ] || \
-				[ ! -f "/adminerevo/plugins/drivers/${driver}.php" ]; then
-			RAW echo "###> '${driver}' Driver not found. <###" 
-			RAW exit 1
-		RAW fi
-
-		CMD echo "======> Installing driver '${adminerevo_driver}' ... <======"
-		CMD cp /adminerevo/plugins/drivers/${driver}.php ${wwwdir}/plugins/drivers
-	RAW done
+	CMD for plugin in ${adminerevo_plugins}; do \
+		if [ "`basename -- \"${plugin}\"`" != "${plugin}" ] || \
+				[ ! -f "/adminerevo/plugins/${plugin}.php" ]; then \
+			echo "###> '${plugin}' Plugin not found. <###"; \
+			exit 1; \
+		fi; \
+		echo "======> Installing plugin '${plugin}' ... <======"; \
+		cp /adminerevo/plugins/${plugin}.php ${wwwdir}/plugins; \
+	    done
 RAW fi
 
 RAW if [ -n "${adminerevo_design}" ]; then
-	RAW if [ "`basename -- "${adminerevo_design}"`" != "${adminerevo_design}" ] || \
-			[ ! -f "/adminerevo/designs/${adminerevo_design}/adminer.css" ]; then
-		RAW echo "###> '${adminerevo_design}' Design not found. <###" 
-		RAW exit 1
-	RAW fi
-
-	CMD echo "======> Installing design '${adminerevo_design}' ... <======"
-	CMD cp /adminerevo/designs/${adminerevo_design}/adminer.css ${wwwdir}/adminer.css
+	CMD if [ "`basename -- \"${adminerevo_design}\"`" != "${adminerevo_design}" ] || \
+			[ ! -f "/adminerevo/designs/${adminerevo_design}/adminer.css" ]; then \
+		echo "###> '${adminerevo_design}' Design not found. <###"; \
+		exit 1; \
+	    fi; \
+	    echo "======> Installing design '${adminerevo_design}' ... <======"; \
+	    cp /adminerevo/designs/${adminerevo_design}/adminer.css ${wwwdir}/adminer.css
 RAW fi
 
 VAR --make-arg-env phpdir=/usr/local/etc/php
