@@ -1,0 +1,11 @@
+INCLUDE get-php-version.makejail
+
+# Runtime dependency.
+PKG php${php_version}-session
+# Extensions.
+PKG php${php_version}-mysqli
+PKG php${php_version}-pgsql
+PKG php${php_version}-sqlite3
+PKG php${php_version}-pdo_dblib
+# Cache.
+PKG php${php_version}-opcache

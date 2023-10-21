@@ -1,0 +1,88 @@
+INCLUDE options/options.makejail
+
+ARG adminerevo_plugins?
+ARG adminerevo_drivers?
+ARG adminerevo_design?
+ARG adminerevo_php_type=production
+ARG adminerevo_upload_limit=128M
+ARG adminerevo_memory_limit=1G
+ARG adminerevo_max_execution_time=600
+ARG adminerevo_session_save_path=/sessions
+ARG adminerevo_tz=UTC
+# Tag
+ARG adminerevo_tag=13.2-php82-apache
+
+FROM --entrypoint gh+AppJail-makejails/adminerevo adminerevo:${adminerevo_tag}
+
+RAW if appjail cmd jexec "${APPJAIL_JAILNAME}" [ -d "/usr/local/www/apache24/data" ]; then
+	RAW case "${adminerevo_php_type}" in
+	RAW 	development|production) ;;
+	RAW 	*) echo "VALID TYPES: development, production"; exit 1
+	RAW esac
+
+	# This symlink is only created for apache as php-fpm Makejail already has
+	# this feature.
+	CMD ln -s /usr/local/etc/php.ini-${adminerevo_php_type} /usr/local/etc/php.ini
+
+	SERVICE apache24 restart
+
+	VAR --make-arg-env wwwdir=/usr/local/www/apache24/data
+RAW else
+	VAR --make-arg-env wwwdir=/usr/local/www/adminerevo
+RAW fi
+
+RAW if [ -n "${adminerevo_plugins}" ]; then
+	RAW for plugin in ${adminerevo_plugins}; do
+		RAW if [ "`basename -- "${plugin}"`" != "${plugin}" ] || \
+				[ ! -f "/adminerevo/plugins/${plugin}.php" ]; then
+			RAW echo "###> '${plugin}' Plugin not found. <###" 
+			RAW exit 1
+		RAW fi
+
+		CMD echo "======> Installing plugin '${plugin}' ... <======"
+		CMD cp /adminerevo/plugins/${plugin}.php ${wwwdir}/plugins
+	RAW done
+RAW fi
+
+RAW if [ -n "${adminerevo_drivers}" ]; then
+	RAW for driver in ${adminerevo_drivers}; do
+		RAW if [ "`basename -- "${driver}"`" != "${driver}" ] || \
+				[ ! -f "/adminerevo/plugins/drivers/${driver}.php" ]; then
+			RAW echo "###> '${driver}' Driver not found. <###" 
+			RAW exit 1
+		RAW fi
+
+		CMD echo "======> Installing driver '${adminerevo_driver}' ... <======"
+		CMD cp /adminerevo/plugins/drivers/${driver}.php ${wwwdir}/plugins/drivers
+	RAW done
+RAW fi
+
+RAW if [ -n "${adminerevo_design}" ]; then
+	RAW if [ "`basename -- "${adminerevo_design}"`" != "${adminerevo_design}" ] || \
+			[ ! -f "/adminerevo/designs/${adminerevo_design}/adminer.css" ]; then
+		RAW echo "###> '${adminerevo_design}' Design not found. <###" 
+		RAW exit 1
+	RAW fi
+
+	CMD echo "======> Installing design '${adminerevo_design}' ... <======"
+	CMD cp /adminerevo/designs/${adminerevo_design}/adminer.css ${wwwdir}/adminer.css
+RAW fi
+
+VAR --make-arg-env phpdir=/usr/local/etc/php
+
+CMD echo "======> Copying required .ini files ... <======"
+
+COPY --verbose files/session-strict.ini ${phpdir}
+COPY --verbose files/adminerevo-misc.ini ${phpdir}
+
+CMD echo "======> Configuring adminerevo-misc.ini ... <======"
+
+REPLACE ${phpdir}/adminerevo-misc.ini UPLOAD_LIMIT ${adminerevo_upload_limit}
+REPLACE ${phpdir}/adminerevo-misc.ini MEMORY_LIMIT ${adminerevo_memory_limit}
+REPLACE ${phpdir}/adminerevo-misc.ini MAX_EXECUTION_TIME ${adminerevo_max_execution_time}
+REPLACE ${phpdir}/adminerevo-misc.ini SESSION_SAVE_PATH ${adminerevo_session_save_path}
+REPLACE ${phpdir}/adminerevo-misc.ini TZ ${adminerevo_tz}
+
+CMD echo "======> Creating directory for session.save_path ... <======"
+CMD mkdir -p "${adminerevo_session_save_path}"
+CMD chown www:www "${adminerevo_session_save_path}"

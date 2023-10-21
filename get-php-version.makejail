@@ -1,0 +1,8 @@
+RAW if appjail cmd jexec "${APPJAIL_JAILNAME}" which -s php; then
+	RAW php_version=`echo '<?php echo phpversion();' | appjail cmd jexec "${APPJAIL_JAILNAME}" php | sed -Ee 's/([0-9]+)\.([0-9]+).+/\1\2/'`
+RAW elif appjail cmd jexec "${APPJAIL_JAILNAME}" [ -d "/usr/local/www/apache24/data" ]; then
+	RAW php_version=`appjail pkg jail "${APPJAIL_JAILNAME}" info -x '^mod_php[0-9]+[0-9]+' | sed -Ee 's/mod_php([0-9]+[0-9]+).+/\1/'`
+RAW else
+	RAW echo "###> Cannot get the PHP version. <###"
+	RAW exit 1
+RAW fi

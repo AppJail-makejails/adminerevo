@@ -1,0 +1,17 @@
+ARG adminerevo_version=4.8.2
+
+PKG git-tiny
+
+# Plugins & Designs
+CMD git clone --recurse-submodules=designs --depth 1 --shallow-submodules --branch "v${adminerevo_version}" https://github.com/adminerevo/adminerevo.git /tmp/adminerevo
+CMD mkdir -p /adminerevo
+CMD mv /tmp/adminerevo/plugins/plugin.php /tmp
+CMD mv /tmp/adminerevo/plugins /adminerevo
+CMD mv /tmp/adminerevo/designs /adminerevo
+CMD rm -rf /tmp/adminerevo
+PKG --remove git-tiny
+PKG --autoremove
+# Adminerevo
+CMD fetch -o /tmp/adminer.php "https://github.com/adminerevo/adminerevo/releases/download/v${adminerevo_version}/adminer-${adminerevo_version}.php"
+
+INCLUDE pkgs.makejail
