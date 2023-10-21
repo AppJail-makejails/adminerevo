@@ -1,7 +1,7 @@
 INCLUDE gh+AppJail-makejails/php
 INCLUDE install-adminerevo.makejail
 
-mkdir -p /usr/local/www/adminerevo
+CMD mkdir -p /usr/local/www/adminerevo
 COPY struct/ /usr/local/www/adminerevo
 CMD mv /tmp/adminer.php /usr/local/www/apache24/data
 CMD mv /tmp/plugin.php /usr/local/www/apache24/data/plugins
