@@ -70,3 +70,80 @@ REPLACE ${phpdir}/adminerevo-misc.ini TZ ${adminerevo_tz}
 CMD echo "======> Creating directory for session.save_path ... <======"
 CMD mkdir -p "${adminerevo_session_save_path}"
 CMD chown www:www "${adminerevo_session_save_path}"
+
+STAGE custom:list_plugins
+
+CMD find /adminerevo/plugins -name '*.php' -exec basename {} \; | sed -Ee 's/^(.+)\.php$/\1/'
+
+STAGE custom:list_installed_plugins
+
+RAW if appjail cmd jexec "${APPJAIL_JAILNAME}" [ -d "/usr/local/www/apache24/data" ]; then
+	VAR --make-arg-env wwwdir=/usr/local/www/apache24/data
+RAW else
+	VAR --make-arg-env wwwdir=/usr/local/www/adminerevo
+RAW fi
+
+CMD find ${wwwdir}/plugins -name '*.php' ! -name 'index.php' ! -name 'plugin.php' -maxdepth 1 -exec basename {} \; | sed -Ee 's/^(.+)\.php$/\1/'
+
+STAGE custom:add_plugin
+
+ARG plugin
+
+CMD if [ "`basename -- \"${plugin}\"`" != "${plugin}" ] || \
+			[ ! -f "/adminerevo/plugins/${plugin}.php" ]; then \
+		echo "###> '${plugin}' Plugin not found. <###"; \
+		exit 1; \
+	fi; \
+	if [ -d "/usr/local/www/apache24/data" ]; then \
+		cp /adminerevo/plugins/${plugin}.php /usr/local/www/apache24/data/plugins; \
+	else \
+		cp /adminerevo/plugins/${plugin}.php /usr/local/www/adminerevo; \
+	fi
+
+STAGE custom:remove_plugin
+
+ARG plugin
+
+CMD if [ "`basename -- \"${plugin}\"`" != "${plugin}" ] || \
+		[ "${plugin}" = "index" ] || \
+		[ "${plugin}" = "plugin" ] || \
+		[ ! -f "/usr/local/www/apache24/data/plugins/${plugin}.php" ] && \
+		[ ! -f "/usr/local/www/adminerevo/plugins/${plugin}.php" ]; then \
+	echo "###> '${plugin}' This plugin is not installed. <###"; \
+	exit 1; \
+    fi; \
+    if [ -d "/usr/local/www/apache24/data" ]; then \
+    	rm -f /usr/local/www/apache24/data/plugins/${plugin}.php; \
+    else \
+    	rm -f /usr/local/www/adminerevo/plugins/${plugin}.php; \
+    fi
+
+STAGE custom:list_designs
+
+CMD find /adminerevo/designs -type d -mindepth 1 -maxdepth 1 -exec basename {} \;
+
+STAGE custom:change_design
+
+ARG design
+
+CMD if [ "`basename -- \"${design}\"`" != "${design}" ] || \
+		[ ! -f "/adminerevo/designs/${design}/adminer.css" ]; then \
+	echo "###> '${design}' Design not found. <###"; \
+	exit 1; \
+    fi; \
+    if [ -d "/usr/local/www/apache24/data" ]; then \
+    	cp /adminerevo/designs/${design}/adminer.css /usr/local/www/apache24/data/adminer.css; \
+    else \
+    	cp /adminerevo/designs/${design}/adminer.css /usr/local/www/adminerevo/adminer.css; \
+    fi
+
+STAGE custom:remove_design
+
+CMD if [ -f "/usr/local/www/apache24/data/adminer.css" ]; then \
+	rm -f /usr/local/www/apache24/data/adminer.css; \
+    elif [ -f "/usr/local/www/adminerevo/adminer.css" ]; then \
+	rm -f /usr/local/www/adminerevo/adminer.css; \
+    else \
+	echo "###> There is currently no design. <###"; \
+	exit 1; \
+    fi
