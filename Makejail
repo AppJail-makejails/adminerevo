@@ -61,6 +61,21 @@ COPY --verbose files/adminerevo-misc.ini ${phpdir}
 
 CMD echo "======> Configuring adminerevo-misc.ini ... <======"
 
+RAW if ! printf "%s" "${adminerevo_upload_limit}" | grep -qEe '^[0-9]+[KMG]$'; then
+RAW 	echo "###> '${adminerevo_upload_limit}' Invalid upload limit. <###"
+RAW 	exit 1
+RAW fi
+
+RAW if ! printf "%s" "${adminerevo_memory_limit}" | grep -qEe '^[0-9]+[KMG]$'; then
+RAW 	echo "###> '${adminerevo_memory_limit}' Invalid memory limit. <###"
+RAW 	exit 1
+RAW fi
+
+RAW if ! printf "%s" "${adminerevo_max_execution_time}" | grep -qEe '^[0-9]+$'; then
+RAW 	echo "###> '${adminerevo_max_execution_time}' Invalid max. execution time. <###"
+RAW 	exit 1
+RAW fi
+
 REPLACE ${phpdir}/adminerevo-misc.ini UPLOAD_LIMIT ${adminerevo_upload_limit}
 REPLACE ${phpdir}/adminerevo-misc.ini MEMORY_LIMIT ${adminerevo_memory_limit}
 REPLACE ${phpdir}/adminerevo-misc.ini MAX_EXECUTION_TIME ${adminerevo_max_execution_time}
