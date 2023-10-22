@@ -209,8 +209,8 @@ You can also easily put your `adminer.css` alongside `adminer.php`.
 * `adminerevo_plugins` (optional): A space-separated list of plugins to be added.
 * `adminerevo_design` (optional): Design to be used.
 * `adminerevo_php_type` (default: `production`) The PHP configuration file to link to `/usr/local/etc/php.ini`. Valid values: `development`, `production`. Only valid for apache, use the `php_type` argument when using php-fpm.
-* `adminerevo_upload_limit` (default: `2048K`): This option will change [upload_max_filesize](https://www.php.net/manual/en/ini.core.php#ini.upload-max-filesize) and [post_max_size](https://www.php.net/manual/en/ini.core.php#ini.post-max-size) values. Format: `[0-9]+[KMG]`.
-* `adminerevo_memory_limit` (default: `512M`): This option will override the memory limit for PHP ([memory_limit](https://www.php.net/manual/en/ini.core.php#ini.memory-limit)). Format: `[0-9]+[KMG]`.
+* `adminerevo_upload_limit` (default: `128M`): This option will change [upload_max_filesize](https://www.php.net/manual/en/ini.core.php#ini.upload-max-filesize) and [post_max_size](https://www.php.net/manual/en/ini.core.php#ini.post-max-size) values. Format: `[0-9]+[KMG]`.
+* `adminerevo_memory_limit` (default: `1G`): This option will override the memory limit for PHP ([memory_limit](https://www.php.net/manual/en/ini.core.php#ini.memory-limit)). Format: `[0-9]+[KMG]`.
 * `adminerevo_max_execution_time` (default: `600`): This option will override the maximum execution time in seconds for PHP ([max_execution_time](https://www.php.net/manual/en/info.configuration.php#ini.max-execution-time)).
 * `adminerevo_session_save_path` (default: `/sessions`): See [session.save_path](https://www.php.net/manual/en/session.configuration.php#ini.session.save-path).
 * `adminerevo_tz` (default: `UTC`): Change [date.timezone](https://www.php.net/manual/en/datetime.configuration.php#ini.date.timezone).
