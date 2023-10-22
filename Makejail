@@ -112,7 +112,7 @@ CMD if [ "`basename -- \"${plugin}\"`" != "${plugin}" ] || \
 	if [ -d "/usr/local/www/apache24/data" ]; then \
 		cp /adminerevo/plugins/${plugin}.php /usr/local/www/apache24/data/plugins; \
 	else \
-		cp /adminerevo/plugins/${plugin}.php /usr/local/www/adminerevo; \
+		cp /adminerevo/plugins/${plugin}.php /usr/local/www/adminerevo/plugins; \
 	fi
 
 STAGE custom:remove_plugin
