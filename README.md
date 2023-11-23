@@ -259,8 +259,8 @@ appjail image export adminerevo
 
 | Tag                 | Arch    | Version           | Type   | `adminerevo_version` |
 | ------------------- | ------- | ----------------- | ------ | -------------------- |
-| `13.2-php82-apache` | `amd64` | `13.2-RELEASE-p4` | `thin` |        `4.8.2`       |
-| `13.2-php82-fpm`    | `amd64` | `13.2-RELEASE-p4` | `thin` |        `4.8.2`       |
+| `13.2-php82-apache` | `amd64` | `13.2-RELEASE` | `thin` |        `4.8.2`       |
+| `13.2-php82-fpm`    | `amd64` | `13.2-RELEASE` | `thin` |        `4.8.2`       |
 
 ## Notes
 
