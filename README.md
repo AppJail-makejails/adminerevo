@@ -253,14 +253,16 @@ appjail image export adminerevo
 
 ### Arguments
 
-* `adminerevo_version` (default: `4.8.2`). 
+* `adminerevo_version` (default: `4.8.3`). 
 
 ## Tags
 
-| Tag                 | Arch    | Version           | Type   | `adminerevo_version` |
-| ------------------- | ------- | ----------------- | ------ | -------------------- |
-| `13.2-php82-apache` | `amd64` | `13.2-RELEASE` | `thin` |        `4.8.2`       |
-| `13.2-php82-fpm`    | `amd64` | `13.2-RELEASE` | `thin` |        `4.8.2`       |
+| Tag                 | Arch    | Version        | Type   | `adminerevo_version` |
+| ------------------- | ------- | -------------- | ------ | -------------------- |
+| `13.2-php82-apache` | `amd64` | `13.2-RELEASE` | `thin` |        `4.8.3`       |
+| `13.2-php82-fpm`    | `amd64` | `13.2-RELEASE` | `thin` |        `4.8.3`       |
+| `14.0-php82-apache` | `amd64` | `14.0-RELEASE` | `thin` |        `4.8.3`       |
+| `14.0-php82-fpm`    | `amd64` | `14.0-RELEASE` | `thin` |        `4.8.3`       |
 
 ## Notes
 
