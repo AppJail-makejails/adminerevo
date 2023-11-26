@@ -215,46 +215,6 @@ You can also easily put your `adminer.css` alongside `adminer.php`.
 * `adminerevo_session_save_path` (default: `/sessions`): See [session.save_path](https://www.php.net/manual/en/session.configuration.php#ini.session.save-path).
 * `adminerevo_tz` (default: `UTC`): Change [date.timezone](https://www.php.net/manual/en/datetime.configuration.php#ini.date.timezone).
 
-## How to build the Image
-
-### Apache
-
-```sh
-appjail makejail \
-    -j adminerevo \
-    -f "gh+AppJail-makejails/adminerevo --file build-with-apache.makejail" \
-    -o virtualnet=":<random> default" \
-    -o nat -- \
-        --apache_tag 13.2-php82
-```
-
-### FPM
-
-```sh
-appjail makejail \
-    -j adminerevo \
-    -f "gh+AppJail-makejails/adminerevo --file build-with-php-fpm.makejail" \
-    -o virtualnet=":<random> default" \
-    -o nat -- \
-        --php_tag 13.2-82 \
-        --php_use_fpm 1
-```
-
-### Build
-
-```sh
-appjail stop adminerevo
-appjail cmd local adminerevo sh -c "rm -f var/log/*"
-appjail cmd local adminerevo sh -c "rm -f var/cache/pkg/*"
-appjail cmd local adminerevo sh -c "rm -f var/run/*"
-appjail cmd local adminerevo vi etc/rc.conf
-appjail image export adminerevo
-```
-
-### Arguments
-
-* `adminerevo_version` (default: `4.8.3`). 
-
 ## Tags
 
 | Tag                 | Arch    | Version        | Type   | `adminerevo_version` |
