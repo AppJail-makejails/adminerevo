@@ -1,0 +1,3 @@
+OPTION volume=adminerevo-plugins-file mountpoint:usr/local/www/adminerevo/plugins.php
+OPTION volume=adminerevo-plugins mountpoint:/usr/local/www/adminerevo/plugins
+OPTION volume=adminerevo-drivers mountpoint:/usr/local/www/adminerevo/plugins/drivers
