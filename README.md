@@ -219,19 +219,19 @@ You can also easily put your `adminer.css` alongside `adminer.php`.
 
 #### Apache
 
-| Name                      | Owner | Group | Perm | Type | Mountpoint                                     |
-| ------------------------- | ----- | ----- | ---- | ---- | ---------------------------------------------- |
-| `adminerevo-plugins-file` |   -   |   -   |  -   |  -   | `usr/local/www/apache24/data/plugins.php`      |
-| `adminerevo-plugins`      |   -   |   -   |  -   |  -   | `/usr/local/www/apache24/data/plugins`         |
-| `adminerevo-drivers`      |   -   |   -   |  -   |  -   | `/usr/local/www/apache24/data/plugins/drivers` |
+| Name                    | Owner | Group | Perm | Type | Mountpoint                                   |
+| ----------------------- | ----- | ----- | ---- | ---- | -------------------------------------------- |
+| adminerevo-plugins-file |   -   |   -   |  -   |  -   | usr/local/www/apache24/data/plugins.php      |
+| adminerevo-plugins      |   -   |   -   |  -   |  -   | /usr/local/www/apache24/data/plugins         |
+| adminerevo-drivers      |   -   |   -   |  -   |  -   | /usr/local/www/apache24/data/plugins/drivers |
 
 #### FPM
 
-| Name                      | Owner | Group | Perm | Type | Mountpoint                                  |
-| ------------------------- | ----- | ----- | ---- | ---- | ------------------------------------------- |
-| `adminerevo-plugins-file` |   -   |   -   |  -   |  -   | `usr/local/www/adminerevo/plugins.php`      |
-| `adminerevo-plugins`      |   -   |   -   |  -   |  -   | `/usr/local/www/adminerevo/plugins`         |
-| `adminerevo-drivers`      |   -   |   -   |  -   |  -   | `/usr/local/www/adminerevo/plugins/drivers` |
+| Name                      | Owner | Group | Perm | Type | Mountpoint                                |
+| ------------------------- | ----- | ----- | ---- | ---- | ----------------------------------------- |
+| adminerevo-plugins-file   |   -   |   -   |  -   |  -   | usr/local/www/adminerevo/plugins.php      |
+| adminerevo-plugins        |   -   |   -   |  -   |  -   | /usr/local/www/adminerevo/plugins         |
+| adminerevo-drivers        |   -   |   -   |  -   |  -   | /usr/local/www/adminerevo/plugins/drivers |
 
 ## Tags
 
