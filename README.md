@@ -215,6 +215,24 @@ You can also easily put your `adminer.css` alongside `adminer.php`.
 * `adminerevo_session_save_path` (default: `/sessions`): See [session.save_path](https://www.php.net/manual/en/session.configuration.php#ini.session.save-path).
 * `adminerevo_tz` (default: `UTC`): Change [date.timezone](https://www.php.net/manual/en/datetime.configuration.php#ini.date.timezone).
 
+### Volumes
+
+#### Apache
+
+| Name                      | owner | group | perm | type | mountpoint                                     |
+| ------------------------- | ----- | ----- | ---- | ---- | ---------------------------------------------- |
+| `adminerevo-plugins-file` |   -   |   -   |  -   |  -   | `usr/local/www/apache24/data/plugins.php`      |
+| `adminerevo-plugins`      |   -   |   -   |  -   |  -   | `/usr/local/www/apache24/data/plugins`         |
+| `adminerevo-drivers`      |   -   |   -   |  -   |  -   | `/usr/local/www/apache24/data/plugins/drivers` |
+
+#### FPM
+
+| Name                      | owner | group | perm | type | mountpoint                                  |
+| ------------------------- | ----- | ----- | ---- | ---- | ------------------------------------------- |
+| `adminerevo-plugins-file` |   -   |   -   |  -   |  -   | `usr/local/www/adminerevo/plugins.php`      |
+| `adminerevo-plugins`      |   -   |   -   |  -   |  -   | `/usr/local/www/adminerevo/plugins`         |
+| `adminerevo-drivers`      |   -   |   -   |  -   |  -   | `/usr/local/www/adminerevo/plugins/drivers` |
+
 ## Tags
 
 | Tag                 | Arch    | Version        | Type   | `adminerevo_version` |
