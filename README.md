@@ -244,4 +244,4 @@ You can also easily put your `adminer.css` alongside `adminer.php`.
 
 ## Notes
 
-* Only `mysqli`, `pgsql`, `sqlite3` and `pdo_dblib` are included in the images. 
+1. Only `mysqli`, `pgsql`, `sqlite3` and `pdo_dblib` are included in the images. 
