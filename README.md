@@ -205,7 +205,7 @@ You can also easily put your `adminer.css` alongside `adminer.php`.
 
 ### Arguments
 
-* `adminerevo_tag` (default: `13.2-php82-apache`): See [#tags](#tags).
+* `adminerevo_tag` (default: `13.3-php82-apache`): See [#tags](#tags).
 * `adminerevo_plugins` (optional): A space-separated list of plugins to be added.
 * `adminerevo_design` (optional): Design to be used.
 * `adminerevo_php_type` (default: `production`) The PHP configuration file to link to `/usr/local/etc/php.ini`. Valid values: `development`, `production`. Only valid for apache, use the `php_type` argument when using php-fpm.
@@ -237,8 +237,8 @@ You can also easily put your `adminer.css` alongside `adminer.php`.
 
 | Tag                 | Arch    | Version        | Type   | `adminerevo_version` |
 | ------------------- | ------- | -------------- | ------ | -------------------- |
-| `13.2-php82-apache` | `amd64` | `13.2-RELEASE` | `thin` |        `4.8.3`       |
-| `13.2-php82-fpm`    | `amd64` | `13.2-RELEASE` | `thin` |        `4.8.3`       |
+| `13.3-php82-apache` | `amd64` | `13.3-RELEASE` | `thin` |        `4.8.3`       |
+| `13.3-php82-fpm`    | `amd64` | `13.3-RELEASE` | `thin` |        `4.8.3`       |
 | `14.0-php82-apache` | `amd64` | `14.0-RELEASE` | `thin` |        `4.8.3`       |
 | `14.0-php82-fpm`    | `amd64` | `14.0-RELEASE` | `thin` |        `4.8.3`       |
 

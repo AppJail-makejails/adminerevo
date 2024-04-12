@@ -9,7 +9,7 @@ ARG adminerevo_max_execution_time=600
 ARG adminerevo_session_save_path=/sessions
 ARG adminerevo_tz=UTC
 # Tag
-ARG adminerevo_tag=13.2-php82-apache
+ARG adminerevo_tag=13.3-php82-apache
 
 FROM --entrypoint gh+AppJail-makejails/adminerevo adminerevo:${adminerevo_tag}
 
