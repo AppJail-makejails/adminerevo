@@ -1,4 +1,4 @@
-ARG adminerevo_version=4.8.3
+ARG adminerevo_version=4.8.4
 
 PKG git-tiny
 
