@@ -239,8 +239,8 @@ You can also easily put your `adminer.css` alongside `adminer.php`.
 | ------------------- | ------- | -------------- | ------ | -------------------- |
 | `13.4-php82-apache` | `amd64` | `13.4-RELEASE` | `thin` |        `4.8.4`       |
 | `13.4-php82-fpm`    | `amd64` | `13.4-RELEASE` | `thin` |        `4.8.4`       |
-| `14.1-php82-apache` | `amd64` | `14.1-RELEASE` | `thin` |        `4.8.4`       |
-| `14.1-php82-fpm`    | `amd64` | `14.1-RELEASE` | `thin` |        `4.8.4`       |
+| `14.2-php82-apache` | `amd64` | `14.2-RELEASE` | `thin` |        `4.8.4`       |
+| `14.2-php82-fpm`    | `amd64` | `14.2-RELEASE` | `thin` |        `4.8.4`       |
 
 ## Notes
 
