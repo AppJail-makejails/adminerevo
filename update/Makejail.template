@@ -10,7 +10,7 @@ ARG adminerevo_session_save_path=/sessions
 ARG adminerevo_tz=UTC
 ARG adminerevo_ajspec=gh+AppJail-makejails/adminerevo
 # Tag
-ARG adminerevo_tag=13.4-php82-apache
+ARG adminerevo_tag=%%TAG1%%-php%%PHP_TAG%%-apache
 
 FROM --entrypoint "${adminerevo_ajspec}" adminerevo:${adminerevo_tag}
 
