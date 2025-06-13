@@ -240,8 +240,8 @@ You can also easily put your `adminer.css` alongside `adminer.php`.
 | -------------------------------- | ------- | ------------------ | ------ | -------------------- |
 | `13.5-php82-apache` | `amd64` | `13.5-RELEASE` | `thin` | `4.8.4`        |
 | `13.5-php82-fpm`    | `amd64` | `13.5-RELEASE` | `thin` | `4.8.4`        |
-| `14.2-php82-apache` | `amd64` | `14.2-RELEASE` | `thin` | `4.8.4`        |
-| `14.2-php82-fpm`    | `amd64` | `14.2-RELEASE` | `thin` | `4.8.4`        |
+| `14.3-php82-apache` | `amd64` | `14.3-RELEASE` | `thin` | `4.8.4`        |
+| `14.3-php82-fpm`    | `amd64` | `14.3-RELEASE` | `thin` | `4.8.4`        |
 
 ## Notes
 
