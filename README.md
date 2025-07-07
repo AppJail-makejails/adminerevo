@@ -1,3 +1,15 @@
+# Status
+
+* **Archived**: `This repository was archived by the owner on Jan 24, 2025. It is now read-only.`
+* **Link**: https://github.com/adminerevo/adminerevo
+* **Reason**:
+
+  > Facing personal problems which will still last some time, after what I will need some time to recover. I think it wouldn't be fair to let all of you expect something here which will take time to happen, while others are already busy on the same way.
+  >
+  > I've called for help, for a co-manager, without getting an answer; not being able to proceed as good as I would like, I'm going to close the repository. An option is to switch to pematon/adminer who has in his roadmap some elements I wanted to achieve.
+  >
+  > Thanks for your all your contributions of any mean, L.
+
 # AdminerEvo
 
 **AdminerEvo** is a web-based database management interface, with a focus on security, user experience, performance, functionality and size.
