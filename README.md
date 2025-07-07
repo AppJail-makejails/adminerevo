@@ -16,7 +16,7 @@
 
 It is available for download as a single self-contained PHP file, making it easy to deploy anywhere. 
 
-<img src="https://docs.adminerevo.org/assets/logo.svg" width="80%" height="auto">
+<img src="https://i.ibb.co/QvkFcChr/adminerevo.png" width="80%" height="auto">
 
 docs.adminerevo.org
 
